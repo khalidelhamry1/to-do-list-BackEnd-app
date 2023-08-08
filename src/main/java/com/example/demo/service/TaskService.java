@@ -7,8 +7,8 @@ import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.TaskRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 @Service
 public class TaskService {
@@ -34,6 +34,7 @@ public class TaskService {
 
     public void addTask(Task task) {
          taskRepository.save(task);
+        // task.getTaskId()
     }
     public void deleteTask(Long taskId) {
         Task task1= taskRepository.findById(taskId)
@@ -53,5 +54,7 @@ public class TaskService {
 
 
     }
-
+    public List<Task> getTaskForMember(Long id) {
+      return taskRepository.findByMemberId(id);
+    }
 }

@@ -35,5 +35,9 @@ public class TaskController {
     public void updateTask(@PathVariable("taskId") Long taskId,@RequestBody Task task) {
         taskService.updateTask(taskId,task);
     }
+    @GetMapping("/members/{MemberId}")
+    public List<Task> getTaskForMember(@PathVariable Long id){
+        return  taskService.getTaskForMember(id);
+    }
 
 }
